@@ -24,7 +24,8 @@ function Formulario() {
 				const user = await signInWithEmailAndPassword(auth, email, senha)
 			} catch (error) {
 				toast.error('Usuário inválido ou já existe', {
-					autoClose: 3500
+					autoClose: 3500,
+					position: 'bottom-center'
 				})
 			}
 		}
