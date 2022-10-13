@@ -46,8 +46,8 @@ function Formulario() {
 			/>
 			{formik.errors.senha ? <p className='text-red-500'>{formik.errors.senha}</p> : null}
 
-			<button className='p-2 border rounded-md bg-black text-white' type='submit'>
-				Logar
+			<button className='p-2 border rounded-md bg-gray-900 text-white' type='submit'>
+				Entrar
 			</button>
 		</form>
 	)

@@ -12,15 +12,13 @@ function FormLogin() {
 	}
 
 	return (
-		<section className='max-w-xs w-full p-5 rounded-md bg-white'>
+		<section className='max-w-sm w-full p-5 rounded-md bg-white'>
 			<Titulo titulo='Login' />
 			<Formulario />
 			<LoginComGoogle />
-			<button
-				className='w-full p-2 rounded-md border text-center bg-black text-white'
-				onClick={mudarFormulario}>
-				Ainda não possui conta?
-			</button>
+			<div className='text-lg mt-5 w-full text-black'>
+				Ainda não possui conta? <button className='text-blue-800' onClick={mudarFormulario}>Crie uma</button>
+			</div>
 		</section>
 	)
 }

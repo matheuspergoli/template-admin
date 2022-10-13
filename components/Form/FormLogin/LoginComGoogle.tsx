@@ -14,10 +14,10 @@ function LoginComGoogle() {
 
 	return (
 		<button
-			className='w-full p-2 border rounded-md bg-black text-white'
+			className='w-full p-2 border rounded-md bg-red-500 text-white'
 			type='submit'
 			onClick={loginComGoogle}>
-			Login com Google
+			Entrar com Google
 		</button>
 	)
 }
