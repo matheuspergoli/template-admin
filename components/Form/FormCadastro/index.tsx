@@ -5,7 +5,7 @@ import Titulo from './Titulo'
 
 function FormCadastro() {
 	return (
-		<section className='max-w-80 p-5 rounded-md bg-white'>
+		<section className='max-w-xs w-full p-5 rounded-md bg-white'>
 			<Titulo titulo='Cadastrar' />
 			<Formulario />
 			<CadastrarComGoogle />
