@@ -4,6 +4,8 @@ import { useFormik } from 'formik'
 import { CadastroSchema } from '../../../model/CadastroSchema'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebase/config'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Formulario() {
 	const formik = useFormik({
@@ -21,35 +23,40 @@ function Formulario() {
 				const { email, senha } = formik.values
 				const user = await createUserWithEmailAndPassword(auth, email, senha)
 			} catch (error) {
-				console.log(error)
+				toast.error('Usuário inválido ou já existe', {
+					autoClose: 3500
+				})
 			}
 		}
 	}
 
 	return (
-		<form className='flex flex-col gap-2' onSubmit={formik.handleSubmit}>
-			<Input
-				type='email'
-				name='email'
-				placeholder='Digite seu email'
-				value={formik.values.email}
-				onChange={formik.handleChange}
-			/>
-			{formik.errors.email ? <p className='text-red-500'>{formik.errors.email}</p> : null}
+		<>
+			<form className='flex flex-col gap-2' onSubmit={formik.handleSubmit}>
+				<Input
+					type='email'
+					name='email'
+					placeholder='Digite seu email'
+					value={formik.values.email}
+					onChange={formik.handleChange}
+				/>
+				{formik.errors.email ? <p className='text-red-500'>{formik.errors.email}</p> : null}
 
-			<Input
-				type='password'
-				name='senha'
-				placeholder='Digite sua senha'
-				value={formik.values.senha}
-				onChange={formik.handleChange}
-			/>
-			{formik.errors.senha ? <p className='text-red-500'>{formik.errors.senha}</p> : null}
+				<Input
+					type='password'
+					name='senha'
+					placeholder='Digite sua senha'
+					value={formik.values.senha}
+					onChange={formik.handleChange}
+				/>
+				{formik.errors.senha ? <p className='text-red-500'>{formik.errors.senha}</p> : null}
 
-			<button className='p-2 border rounded-md bg-gray-900 text-white' type='submit'>
-				Cadastrar
-			</button>
-		</form>
+				<button className='p-2 border rounded-md bg-gray-900 text-white' type='submit'>
+					Cadastrar
+				</button>
+			</form>
+			<ToastContainer />
+		</>
 	)
 }
 
