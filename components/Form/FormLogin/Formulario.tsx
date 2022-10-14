@@ -1,6 +1,5 @@
 import React from 'react'
-import Input from './Input'
-import { useFormik } from 'formik'
+import { Formik, Form, Field } from 'formik'
 import { ValidationSchema } from '../../../model/ValidationSchema'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebase/config'
@@ -8,54 +7,49 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 function Formulario() {
-	const formik = useFormik({
-		initialValues: {
-			senha: '',
-			email: ''
-		},
-		validationSchema: ValidationSchema,
-		onSubmit: login
-	})
-
-	async function login() {
-		if (formik.values && formik.values.email && formik.values.senha) {
-			try {
-				const { email, senha } = formik.values
-				const user = await signInWithEmailAndPassword(auth, email, senha)
-			} catch (error) {
-				toast.error('Usuário inválido ou não existe', {
-					autoClose: 3500,
-					position: 'bottom-center'
-				})
-			}
+	async function login(userInfo: { email: string; senha: string }) {
+		try {
+			const user = await signInWithEmailAndPassword(auth, userInfo.email, userInfo.senha)
+		} catch (error) {
+			toast.error('Usuário inválido ou não existe', {
+				autoClose: 3500,
+				position: 'bottom-center'
+			})
 		}
 	}
 
 	return (
 		<>
-			<form className='flex flex-col gap-2' onSubmit={formik.handleSubmit}>
-				<Input
-					type='email'
-					name='email'
-					placeholder='Digite seu email'
-					value={formik.values.email}
-					onChange={formik.handleChange}
-				/>
-				{formik.errors.email ? <p className='text-red-500'>{formik.errors.email}</p> : null}
+			<Formik
+				onSubmit={(values) => login(values)}
+				validationSchema={ValidationSchema}
+				initialValues={{ senha: '', email: '' }}>
+				{({ errors, touched }) => (
+					<Form className='flex flex-col gap-2'>
+						<Field
+							id='email'
+							name='email'
+							type='email'
+							placeholder='Digite seu email'
+							className='w-full p-2 rounded-md border focus:outline-none placeholder:text-black bg-gray-300 focus:bg-white focus:border-blue-400'
+						/>
+						{errors.email && touched.email && <p className='text-red-500'>{errors.email}</p>}
 
-				<Input
-					type='password'
-					name='senha'
-					placeholder='Digite sua senha'
-					value={formik.values.senha}
-					onChange={formik.handleChange}
-				/>
-				{formik.errors.senha ? <p className='text-red-500'>{formik.errors.senha}</p> : null}
+						<Field
+							id='senha'
+							name='senha'
+							type='password'
+							placeholder='Digite sua senha'
+							className='w-full p-2 rounded-md border focus:outline-none placeholder:text-black bg-gray-300 focus:bg-white focus:border-blue-400'
+						/>
+						{errors.senha && touched.senha && <p className='text-red-500'>{errors.senha}</p>}
 
-				<button className='mb-3 mt-5 p-2 border rounded-md bg-gray-900 text-white' type='submit'>
-					Entrar
-				</button>
-			</form>
+						<button type='submit' className='w-full mb-3 mt-5 p-2 border rounded-md bg-gray-900 text-white'>
+							Logar
+						</button>
+					</Form>
+				)}
+			</Formik>
 			<ToastContainer />
 		</>
 	)
