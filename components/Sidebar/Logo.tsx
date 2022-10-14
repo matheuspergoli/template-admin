@@ -3,7 +3,7 @@ import { IconeLogo } from '../../icons'
 
 function Logo() {
 	return (
-		<div className='bg-gradient-to-r from-gray-500 to-gray-900 text-white'>{IconeLogo(6)}</div>
+		<div className='bg-gradient-to-r from-gray-500 to-gray-900 text-white'>{IconeLogo(5)}</div>
 	)
 }
 
