@@ -1,6 +1,5 @@
 import React from 'react'
 import AnimateFadeDiv from '../../motion/AnimateFadeDiv'
-import { UserLoggedContext } from '../../context/UserLoggedContext'
 
 interface ConteudoProps {
 	children: React.ReactNode
