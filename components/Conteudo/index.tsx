@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import AnimateFadeDiv from '../../motion/AnimateFadeDiv'
 
 interface ConteudoProps {
 	children: ReactNode
@@ -7,7 +8,7 @@ interface ConteudoProps {
 function Conteudo(props: ConteudoProps) {
 	return (
 		<section className='w-full p-5 bg-gray-300 text-black dark:text-white dark:bg-gray-700'>
-			{props.children}
+			<AnimateFadeDiv>{props.children}</AnimateFadeDiv>
 		</section>
 	)
 }
