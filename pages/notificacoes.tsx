@@ -6,6 +6,7 @@ function Notificacoes() {
 		<>
 			<Head>
 				<title>Notificações</title>
+				<meta name="description" content='Sua página de notificações do template admin, ative ou modifique suas notificações.' />
 			</Head>
 			<Layout>
 				<h1 className='text-3xl font-bold'>Página Notificações</h1>
