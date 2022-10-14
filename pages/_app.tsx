@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }) {
 			<FormAtualContextProvider>
 				<DarkModeContextProvider>
 					<Head>
+						<meta name='keywords' content='admin, template, nextjs' />
 						<meta name='author' content='Matheus Pergoli' />
 						<meta property='og:title' content='Plataforma Admin NextJS' />
 						<meta
