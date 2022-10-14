@@ -1,6 +1,8 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import React from 'react'
 import { auth } from '../firebase/config'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface UserLoggedProps {
 	children: React.ReactNode
@@ -15,5 +17,19 @@ export function UserLoggedContextProvider(props: UserLoggedProps) {
 		setUser(currentUser)
 	})
 
-	return <UserLoggedContext.Provider value={{ user }}>{props.children}</UserLoggedContext.Provider>
+	React.useEffect(() => {
+		if (user?.email) {
+			toast.success(`Bem vindo(a) ${user?.email}`, {
+				position: 'top-center',
+				autoClose: 2000
+			})
+		}
+	}, [user])
+
+	return (
+		<>
+			<UserLoggedContext.Provider value={{ user }}>{props.children}</UserLoggedContext.Provider>
+			<ToastContainer />
+		</>
+	)
 }
