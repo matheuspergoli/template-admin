@@ -21,7 +21,7 @@ export function UserLoggedContextProvider(props: UserLoggedProps) {
 		if (user?.email) {
 			toast.success(`Bem vindo(a) ${user?.email}`, {
 				position: 'bottom-center',
-				autoClose: 2000
+				autoClose: 3500
 			})
 		}
 	}, [user])
