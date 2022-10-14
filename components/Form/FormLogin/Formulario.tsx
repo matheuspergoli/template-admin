@@ -23,7 +23,7 @@ function Formulario() {
 				const { email, senha } = formik.values
 				const user = await signInWithEmailAndPassword(auth, email, senha)
 			} catch (error) {
-				toast.error('Usuário inválido ou já existe', {
+				toast.error('Usuário inválido ou não existe', {
 					autoClose: 3500,
 					position: 'bottom-center'
 				})
