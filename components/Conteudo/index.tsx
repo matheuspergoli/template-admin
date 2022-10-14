@@ -18,7 +18,7 @@ function Conteudo(props: ConteudoProps) {
 					<h2 className='hidden sm:block'>
 						Bem vindo(a) {user?.displayName ? user.displayName : user.email}
 					</h2>
-					<div className='hidden sm:block'>{IconeUser(6)}</div>
+					<div className='hidden sm:block sm:w-6'>{IconeUser(6)}</div>
 				</div>
 			)}
 		</section>
