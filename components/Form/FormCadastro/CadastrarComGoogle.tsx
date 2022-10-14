@@ -14,7 +14,7 @@ function CadastrarComGoogle() {
 
 	return (
 		<button
-			className='w-full p-2 border rounded-md bg-red-500 text-white'
+			className='mt-3 w-full p-2 border rounded-md bg-red-500 text-white'
 			type='submit'
 			onClick={loginComGoogle}>
 			Cadastrar com Google

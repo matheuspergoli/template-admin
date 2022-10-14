@@ -15,6 +15,7 @@ function FormCadastro() {
 		<section className='max-w-sm w-full p-5 rounded-md bg-white'>
 			<Titulo titulo='Cadastrar' />
 			<Formulario />
+			<hr className='w-3/4 mx-auto border-gray-200' />
 			<CadastrarComGoogle />
 			<div className='text-lg mt-5 w-full text-black'>
 				Já possui conta?{' '}
