@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { onAuthStateChanged } from 'firebase/auth'
 import React from 'react'
 import { auth } from '../firebase/config'
@@ -11,6 +12,7 @@ interface UserLoggedProps {
 export const UserLoggedContext = React.createContext(null)
 
 export function UserLoggedContextProvider(props: UserLoggedProps) {
+	const router = useRouter()
 	const [user, setUser] = React.useState(null)
 
 	onAuthStateChanged(auth, (currentUser) => {
@@ -18,13 +20,13 @@ export function UserLoggedContextProvider(props: UserLoggedProps) {
 	})
 
 	React.useEffect(() => {
-		if (user?.email) {
+		if (user?.email && router.pathname === '/') {
 			toast.success(`Bem vindo(a) ${user?.email}`, {
 				position: 'bottom-center',
 				autoClose: 3500
 			})
 		}
-	}, [user])
+	}, [user, router])
 
 	return (
 		<>
