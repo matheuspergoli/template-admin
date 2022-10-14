@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from './Input'
 import { useFormik } from 'formik'
-import { CadastroSchema } from '../../../model/CadastroSchema'
+import { ValidationSchema } from '../../../model/CadastroSchema'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebase/config'
 import { ToastContainer, toast } from 'react-toastify'
@@ -13,7 +13,7 @@ function Formulario() {
 			senha: '',
 			email: ''
 		},
-		validationSchema: CadastroSchema,
+		validationSchema: ValidationSchema,
 		onSubmit: login
 	})
 
