@@ -20,7 +20,7 @@ export function UserLoggedContextProvider(props: UserLoggedProps) {
 	React.useEffect(() => {
 		if (user?.email) {
 			toast.success(`Bem vindo(a) ${user?.email}`, {
-				position: 'top-center',
+				position: 'bottom-center',
 				autoClose: 2000
 			})
 		}
