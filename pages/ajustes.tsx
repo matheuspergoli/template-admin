@@ -5,8 +5,11 @@ function Ajustes() {
 	return (
 		<>
 			<Head>
-				<title>Ajustes</title>
-				<meta name="description" content="Sua página de ajustes do template admin, configure seu ambiente de trabalho e preferências." />
+				<title>Admin | Ajustes</title>
+				<meta
+					name='description'
+					content='Sua página de ajustes do template admin, configure seu ambiente de trabalho e preferências.'
+				/>
 			</Head>
 			<Layout>
 				<h1 className='text-3xl font-bold'>Página Ajustes</h1>
