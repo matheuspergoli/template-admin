@@ -11,6 +11,12 @@ function MyApp({ Component, pageProps }) {
 				<DarkModeContextProvider>
 					<Head>
 						<meta name='author' content='Matheus Pergoli' />
+						<meta property='og:title' content='Plataforma Admin NextJS' />
+						<meta
+							property='og:description'
+							content='Utilize a melhor plataforma de administração para seus negócios e empresas'
+						/>
+						<meta property='og:image' content='/adm-template.jpg' />
 					</Head>
 					<Component {...pageProps} />
 				</DarkModeContextProvider>
